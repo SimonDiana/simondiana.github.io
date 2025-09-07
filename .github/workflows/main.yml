@@ -57,11 +57,3 @@ jobs:
           git add -A
           git commit -m "Deploy site: ${{ github.sha }}" || echo "No changes to commit"
           git push -f origin gh-pages
-```eof
-
-### What to Do Next
-
-1.  Replace the content of your `.github/workflows/main.yml` file with the code block above.
-2.  Commit and push this change to your `main` branch.
-
-Your GitHub Action will run again, but this time it will use the correct, newer version of Hugo, and the build should succeed.
