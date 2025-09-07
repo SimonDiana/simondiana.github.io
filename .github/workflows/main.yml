@@ -1,0 +1,59 @@
+name: Deploy Hugo site to Pages
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+env:
+  BUILD_DIR: tmp_build
+  GIT_USERNAME: SimonDiana
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          # --- THIS IS THE UPDATED LINE ---
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.125.4/hugo_extended_0.125.4_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+        run: |
+          hugo --minify -d ${{ env.BUILD_DIR }}
+
+      - name: Deploy to gh-pages
+        env:
+          GIT_COMMITTER_NAME: ${{ env.GIT_USERNAME }}
+          GIT_COMMITTER_EMAIL: "actions@github.com"
+        run: |
+          mv "${{ env.BUILD_DIR }}" "${{ runner.temp }}/"
+          git config user.name "${GIT_COMMITTER_NAME}"
+          git config user.email "${GIT_COMMITTER_EMAIL}"
+          
+          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages
+            git checkout gh-pages
+            git rm -rf .
+          else
+            git checkout --orphan gh-pages
+          fi
+          
+          cp -a "${{ runner.temp }}/${{ env.BUILD_DIR }}/." .
+          rm -rf "${{ runner.temp }}/${{ env.BUILD_DIR }}"
+
+          git add -A
+          git commit -m "Deploy site: ${{ github.sha }}" || echo "No changes to commit"
+          git push -f origin gh-pages
