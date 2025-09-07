@@ -1,0 +1,56 @@
+name: Deploy Hugo site to Pages
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write     # << 必须为 write
+  pages: write
+  id-token: write
+
+env:
+  BUILD_DIR: tmp_build
+  GIT_USERNAME: SimonDiana
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.117.0/hugo_extended_0.117.0_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+        run: |
+          hugo --minify -d ${{ env.BUILD_DIR }}
+
+      - name: Deploy to gh-pages
+        env:
+          GIT_COMMITTER_NAME: ${{ env.GIT_USERNAME }}
+          GIT_COMMITTER_EMAIL: "actions@github.com"
+        run: |
+          git config user.name "${GIT_COMMITTER_NAME}"
+          git config user.email "${GIT_COMMITTER_EMAIL}"
+          # 切换/创建 gh-pages 分支
+          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
+            git fetch origin gh-pages
+            git checkout gh-pages
+            git rm -rf .
+          else
+            git checkout --orphan gh-pages
+          fi
+          # 复制构建产物到工作区
+          cp -a "${{ env.BUILD_DIR }}/." .
+          git add -A
+          git commit -m "Deploy site: ${{ github.sha }}" || echo "No changes to commit"
+          # 使用默认凭据（actions/checkout 已配置），推送到 gh-pages
+          git push -f origin gh-pages
