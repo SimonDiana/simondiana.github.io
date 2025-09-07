@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write      # 必须为 write
+  contents: write
   pages: write
   id-token: write
 
@@ -19,7 +19,8 @@ jobs:
     steps:
       - name: Install Hugo CLI
         run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.117.0/hugo_extended_0.117.0_linux-amd64.deb \
+          # --- THIS IS THE UPDATED LINE ---
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.125.4/hugo_extended_0.125.4_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - uses: actions/checkout@v4
@@ -38,31 +39,29 @@ jobs:
           GIT_COMMITTER_NAME: ${{ env.GIT_USERNAME }}
           GIT_COMMITTER_EMAIL: "actions@github.com"
         run: |
-          # 1. 在切换分支前，将构建产物移动到 runner 的临时目录中，防止被 git checkout 清理掉
           mv "${{ env.BUILD_DIR }}" "${{ runner.temp }}/"
-
-          # 2. 配置 Git 用户信息
           git config user.name "${GIT_COMMITTER_NAME}"
           git config user.email "${GIT_COMMITTER_EMAIL}"
           
-          # 3. 切换/创建 gh-pages 分支
           if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
             git fetch origin gh-pages
             git checkout gh-pages
-            # 清理分支中的旧文件
             git rm -rf .
           else
             git checkout --orphan gh-pages
           fi
           
-          # 4. 将之前保存的构建产物复制回当前工作目录
           cp -a "${{ runner.temp }}/${{ env.BUILD_DIR }}/." .
-          
-          # 5. 清理临时目录
           rm -rf "${{ runner.temp }}/${{ env.BUILD_DIR }}"
 
-          # 6. 添加、提交和推送
           git add -A
           git commit -m "Deploy site: ${{ github.sha }}" || echo "No changes to commit"
-          # 使用 -f (force) 推送，因为我们每次都是重新生成整个站点
           git push -f origin gh-pages
+```eof
+
+### What to Do Next
+
+1.  Replace the content of your `.github/workflows/main.yml` file with the code block above.
+2.  Commit and push this change to your `main` branch.
+
+Your GitHub Action will run again, but this time it will use the correct, newer version of Hugo, and the build should succeed.
