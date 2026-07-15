@@ -11,6 +11,22 @@
   opacity: 0.95;
 }
 
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+
+  .site-logo {
+    width: 2.1rem;
+    height: 2.1rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 8px;
+    object-fit: cover;
+  }
+}
+
 .navbar .dropdown-menu,
 .btn-group.dropdown .dropdown-menu {
   background-color: var(--global-bg-color);
