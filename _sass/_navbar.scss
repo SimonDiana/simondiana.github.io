@@ -19,11 +19,13 @@
   padding-bottom: 0.25rem;
 
   .site-logo {
-    width: 2.1rem;
-    height: 2.1rem;
+    width: auto;
+    height: 3rem;
+    max-width: 3.75rem;
+    flex: 0 0 auto;
     border: 1px solid color-mix(in srgb, var(--global-accent-color) 55%, var(--global-divider-color));
-    border-radius: 8px;
-    object-fit: cover;
+    border-radius: 10px;
+    object-fit: contain;
     box-shadow: 0 4px 14px rgba(140, 117, 110, 0.16);
   }
 }
@@ -77,15 +79,31 @@
   }
 
   .navbar-nav .nav-item .nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.35rem;
+    padding: 0.42rem 0.78rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
     color: var(--global-text-color);
+    font-weight: 650;
+    transition:
+      color 180ms ease,
+      border-color 180ms ease,
+      background 180ms ease,
+      transform 180ms ease;
 
     &:hover {
       color: var(--global-hover-color);
+      border-color: color-mix(in srgb, var(--global-accent-color) 42%, var(--global-divider-color));
+      background: color-mix(in srgb, var(--global-accent-color) 7%, transparent);
+      transform: translateY(-1px);
     }
   }
 
   .navbar-nav .nav-item.active > .nav-link {
-    background-color: inherit;
+    border-color: color-mix(in srgb, var(--global-accent-color) 72%, var(--global-divider-color));
+    background: color-mix(in srgb, var(--global-accent-color) 10%, transparent);
     font-weight: bolder;
     color: var(--global-theme-color);
 
@@ -95,26 +113,39 @@
   }
 
   .navbar-brand.social {
-    padding-bottom: 0;
-    padding-top: 0;
-    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.12rem;
+    margin-left: 0.15rem;
+    padding: 0;
+    font-size: 1.45rem;
 
     a {
+      display: inline-grid;
+      width: 2.15rem;
+      height: 2.15rem;
+      place-items: center;
+      border-radius: 999px;
+      transition: background 180ms ease;
+
+      &:hover {
+        background: var(--global-accent-soft-color);
+      }
+
       img {
-        width: 1.7rem;
-        height: 1.7rem;
-        margin-bottom: 0.5rem;
-        // margin: 0.5rem;
+        width: 1.45rem;
+        height: 1.45rem;
+        margin: 0;
       }
 
       svg {
-        width: 1.7rem;
-        height: 1.7rem;
-        margin-bottom: 0.5rem;
+        width: 1.45rem;
+        height: 1.45rem;
+        margin: 0;
 
         image {
-          width: 1.7rem;
-          height: 1.7rem;
+          width: 1.45rem;
+          height: 1.45rem;
         }
       }
 
@@ -129,6 +160,22 @@
         }
       }
     }
+  }
+}
+
+.navbar-nav {
+  align-items: center;
+  gap: 0.12rem;
+}
+
+@media (max-width: 575.98px) {
+  .navbar-collapse {
+    padding: 0.65rem 0 0.35rem;
+  }
+
+  .navbar-nav {
+    align-items: flex-end;
+    gap: 0.2rem;
   }
 }
 

@@ -108,11 +108,13 @@ _styles: |
   }
 
   .home-subtitle {
-    max-width: 33rem;
+    max-width: 36rem;
     margin: 1.15rem 0 0;
     color: rgba(255, 255, 255, 0.88);
     font-size: clamp(1rem, 1.6vw, 1.18rem);
     line-height: 1.66;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
   }
 
   .home-actions {
@@ -228,7 +230,8 @@ _styles: |
     font-size: 0.98rem;
     font-weight: 500;
     line-height: 1.55;
-    white-space: nowrap;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
   }
 
   .home-join {
@@ -282,6 +285,10 @@ _styles: |
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
     margin-top: 2.2rem;
+  }
+
+  .home-feed-grid[hidden] {
+    display: none !important;
   }
 
   .home-feed-card {
@@ -531,20 +538,13 @@ _styles: |
   <section class="home-hero" aria-label="Mo Sha home">
     <img class="home-hero__image" src="{{ '/assets/img/home-hero.jpg' | relative_url }}" alt="" aria-hidden="true">
     <div class="home-hero__content">
-      <p class="home-kicker">Theoretical Chemistry · Quantum Dynamics</p>
       <h1 class="home-title">Mo Sha</h1>
       <p class="home-subtitle">
         Ph.D. student in Chemistry at Westlake University, developing theoretical and computational methods for strongly coupled electron-nuclear dynamics.
       </p>
       <div class="home-actions">
-        <a href="#research"><i class="fa-solid fa-wave-square" aria-hidden="true"></i> Research</a>
         <a href="{{ '/publications/' | relative_url }}"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Publications</a>
         <a href="{{ '/cv/' | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> CV</a>
-      </div>
-      <div class="home-signal-strip" aria-label="Research signals">
-        <span>nonadiabatic.md</span>
-        <span>local_diabatic.yml</span>
-        <span>tensor_networks.ai</span>
       </div>
     </div>
   </section>
@@ -563,7 +563,7 @@ _styles: |
     </aside>
   </div>
 
-  <div class="home-feed-grid" id="research">
+  <div class="home-feed-grid" id="research" hidden>
     <section class="home-feed-card home-stream-card home-news-card">
       <h2>Research Focus</h2>
       <div class="news">
