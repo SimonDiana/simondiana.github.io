@@ -1,6 +1,5 @@
 cv:
   name: Mo Sha
-  label: Ph.D. Student in Chemistry
   email: jsczfx1641501004@gmail.com
   location: Hangzhou, Zhejiang, China
   image: ""
@@ -27,7 +26,9 @@ cv:
         studyType: B.S.
         start_date: 2020-09
         end_date: 2024-06
-        score: "GPA: 3.83/4.00; Rank: 1/27"
+        highlights:
+          - "Advisor: Prof. Xiaoguang Bao"
+          - "GPA: 3.83/4.00; Rank: 1/27"
 
     Publications:
       - title: Exponential Convergence of the Local Diabatic Representation for Nonadiabatic Eigenvalue Problems
@@ -37,6 +38,8 @@ cv:
         publisher: Physical Chemistry Chemical Physics 28, 9726-9744
         releaseDate: 2026
         url: https://doi.org/10.1039/D5CP03524D
+        summary: >-
+          Discrete variable local diabatic representation (LDR) provides a divergence-free framework for exact conical intersection dynamics simulation. In this work, we investigate the convergence with respect to the number of “nuclear” grid points and “electronic” states of LDR for the eigenvalue problems using coupled oscillator models and a conical intersection model. The performance of LDR is compared with traditional approaches based on the Born–Huang ansatz and with the crude adiabatic representation. Our results demonstrate that for weak vibronic couplings, LDR shows a similar convergence rate to the exact Born–Huang representation including not only the first-order derivative couplings but also the diagonal Born–Oppenheimer corrections and second-order derivative couplings. For strong but non-diverging vibronic couplings, LDR shows a significantly faster convergence rate with respect to the number of grid points, hence the number of electronic structure computations, than the exact Born–Huang representation. The diagonal Born–Oppenheimer corrections and second-order derivative couplings are found to be important in the Born–Huang framework. For the conical intersection model, while the Born–Huang representation simply does not converge due to diverging derivative couplings, the LDR remains highly accurate and converges exponentially fast. The crude adiabatic representation in general shows a much slower convergence rate in all cases.
 
       - title: Coarse-Grained Geometric Quantum Dynamics in the Tensor Network Representation
         authors:
@@ -46,58 +49,19 @@ cv:
         releaseDate: 2026-01-23
         url: https://doi.org/10.48550/arXiv.2601.16913
 
-    Projects:
-      - name: Visible-light-driven N-H bond activation through proton-coupled electron transfer
-        summary: Investigated reaction mechanisms by optimizing molecular structures, analyzing vibrational frequencies, and locating transition states and intermediates.
-        highlights:
-          - "Supervisor: Prof. Xiaoguang Bao"
-        start_date: 2023-05
-        end_date: 2024
-
-      - name: Phase transitions in bismuth oxide
-        summary: Studied phase transitions between delta-Bi2O3 and beta-Bi2O3 using ab initio molecular dynamics with VASP and machine-learning force fields.
-        highlights:
-          - "Supervisor: Prof. Yizhou Zhu"
-        start_date: 2023-07
-        end_date: 2023-08
-
     Awards:
-      - title: Second Prize, Chinese Mathematics Competitions
-        date: 2023-01
-        awarder: Chinese Mathematics Competitions
-        summary: Approximately top 10%.
-
-      - title: Scholarship for Academic Excellence - First Prize
-        date: 2022-12
+      - title: Outstanding Graduate of Soochow University
+        date: 2024
         awarder: Soochow University
-
-      - title: Scholarship for Academic Excellence - Grand Prize
-        date: 2021-12
-        awarder: Soochow University
-
-      - title: Sumitomo Electric Group Scholarship
-        date: 2021-12
-        awarder: Soochow University
-
-      - title: Comprehensive Scholarship
-        date: 2021-2022
-        awarder: Soochow University
-        summary: Awarded twice.
 
     Skills:
-      - name: Programming
-        level: Experienced
+      - name: Programming Languages
         icon: fa-solid fa-code
-        keywords: "Python, Java, Pascal"
-      - name: Computational Chemistry
-        level: Research
-        icon: fa-solid fa-atom
-        keywords: "Quantum dynamics, VASP, ab initio molecular dynamics, machine-learning force fields, tensor networks"
-
-    Certificates:
-      - name: TOEFL iBT
-        date: 2023
-        issuer: ETS
-        summary: "Score: 93"
-      - name: National Computer Rank Examination Level 2
-        issuer: Microsoft Office
+        keywords:
+          - Python
+          - Java
+          - Pascal
+      - name: Scientific Typesetting
+        icon: fa-solid fa-file-code
+        keywords:
+          - LaTeX

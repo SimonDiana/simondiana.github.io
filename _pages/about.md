@@ -6,7 +6,6 @@ subtitle:
 custom_home: true
 
 profile: false
-
 selected_papers: false
 social: false
 
@@ -23,35 +22,41 @@ _styles: |
 
   .home-page {
     --home-accent: var(--global-accent-color);
-    --home-accent-soft: rgba(231, 153, 176, 0.12);
     margin-top: 0.25rem;
   }
 
   .home-hero {
     position: relative;
-    min-height: min(72vh, 42rem);
+    min-height: min(78vh, 46rem);
     display: flex;
     align-items: center;
-    margin: 0 0 2.2rem;
-    padding: clamp(2rem, 6vw, 4.5rem);
+    padding: clamp(2rem, 6vw, 4.75rem);
     overflow: hidden;
-    border: 1px solid var(--global-divider-color);
-    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--home-accent) 34%, var(--global-divider-color));
+    border-radius: 18px;
     background:
-      linear-gradient(135deg, rgba(140, 117, 110, 0.28), rgba(231, 153, 176, 0.22)),
+      linear-gradient(135deg, rgba(140, 117, 110, 0.24), rgba(231, 153, 176, 0.22)),
       var(--global-card-bg-color);
-    box-shadow: 0 24px 70px rgba(78, 63, 63, 0.18);
+    box-shadow:
+      0 30px 90px rgba(78, 63, 63, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.3) inset;
     isolation: isolate;
   }
 
   .home-hero__image {
     position: absolute;
     top: 50%;
-    right: 0;
+    right: -1%;
     z-index: -3;
-    width: min(46rem, 72vw);
-    height: auto;
+    width: auto;
+    height: 116%;
     transform: translateY(-50%) scaleX(-1);
+    transform-origin: center;
+    transition: transform 900ms cubic-bezier(0.2, 0.75, 0.2, 1);
+  }
+
+  .home-hero:hover .home-hero__image {
+    transform: translateY(-50%) scaleX(-1) scale(1.025);
   }
 
   .home-hero::before {
@@ -59,11 +64,12 @@ _styles: |
     position: absolute;
     inset: 0;
     z-index: -1;
+    opacity: 0.72;
     background:
-      linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      linear-gradient(rgba(255, 255, 255, 0.075) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.075) 1px, transparent 1px);
     background-size: 44px 44px;
-    mask-image: linear-gradient(90deg, black, transparent 78%);
+    mask-image: linear-gradient(90deg, black, transparent 76%);
   }
 
   .home-hero::after {
@@ -71,48 +77,33 @@ _styles: |
     position: absolute;
     inset: 0;
     z-index: -2;
-    background: linear-gradient(90deg, rgba(62, 45, 51, 0.88), rgba(78, 56, 64, 0.58) 42%, rgba(140, 117, 110, 0.12) 78%);
+    background:
+      radial-gradient(circle at 20% 18%, rgba(231, 153, 176, 0.24), transparent 24rem),
+      linear-gradient(90deg, rgba(55, 39, 45, 0.94), rgba(77, 54, 62, 0.7) 46%, rgba(140, 117, 110, 0.08) 80%);
   }
 
   .home-hero__content {
-    width: min(100%, 46rem);
+    width: min(58%, 38rem);
+    min-width: 0;
     color: #fff;
-  }
-
-  .home-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    margin: 0 0 1rem;
-    color: rgba(255, 255, 255, 0.86);
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .home-kicker::before {
-    content: "";
-    width: 2.4rem;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.7;
   }
 
   .home-title {
     margin: 0;
     color: #fff;
-    font-size: clamp(3rem, 8vw, 5.5rem);
-    line-height: 0.98;
-    letter-spacing: 0;
+    font-size: clamp(4rem, 9vw, 6.8rem);
+    font-weight: 320;
+    line-height: 0.94;
+    letter-spacing: -0.035em;
+    text-shadow: 0 8px 30px rgba(55, 39, 45, 0.22);
   }
 
   .home-subtitle {
     max-width: 36rem;
-    margin: 1.15rem 0 0;
-    color: rgba(255, 255, 255, 0.88);
-    font-size: clamp(1rem, 1.6vw, 1.18rem);
-    line-height: 1.66;
+    margin: 1.45rem 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1rem, 1.8vw, 1.22rem);
+    line-height: 1.72;
     overflow-wrap: break-word;
     text-wrap: pretty;
   }
@@ -121,415 +112,135 @@ _styles: |
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-top: 1.55rem;
+    margin-top: 1.8rem;
   }
 
   .home-actions a {
     display: inline-flex;
+    min-height: 3rem;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    min-height: 2.75rem;
-    padding: 0.72rem 1.05rem;
-    border: 1px solid rgba(255, 255, 255, 0.26);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.14);
+    gap: 0.55rem;
+    padding: 0.76rem 1.15rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.13);
     color: #fff !important;
-    font-size: 0.92rem;
-    font-weight: 700;
+    font-size: 0.94rem;
+    font-weight: 750;
     text-decoration: none !important;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     transition:
       transform 180ms ease,
+      border-color 180ms ease,
       background 180ms ease,
       box-shadow 180ms ease;
   }
 
   .home-actions a:first-child {
-    border-color: color-mix(in srgb, var(--home-accent), white 26%);
+    border-color: color-mix(in srgb, var(--home-accent), white 28%);
     background: var(--home-accent);
-    box-shadow: 0 16px 34px rgba(231, 153, 176, 0.28);
+    box-shadow: 0 16px 36px rgba(231, 153, 176, 0.3);
   }
 
   .home-actions a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 18px 38px rgba(78, 63, 63, 0.25);
+    border-color: rgba(255, 255, 255, 0.62);
+    background: color-mix(in srgb, var(--home-accent) 82%, transparent);
+    box-shadow: 0 18px 42px rgba(55, 39, 45, 0.25);
+    transform: translateY(-3px);
   }
 
-  .home-signal-strip {
+  .home-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.45rem;
-    margin-top: 1.35rem;
-  }
-
-  .home-signal-strip span {
-    display: inline-flex;
-    min-height: 1.75rem;
-    align-items: center;
-    padding: 0.32rem 0.55rem;
-    border: 1px solid rgba(255, 255, 255, 0.24);
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.88);
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 0.76rem;
-    font-weight: 700;
-  }
-
-  .home-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1rem;
-    margin: 1.25rem 0 2.2rem;
-  }
-
-  .home-join {
-    border: 1px solid var(--global-divider-color);
-    border-radius: 8px;
-    background:
-      linear-gradient(135deg, var(--home-accent-soft), transparent 46%),
-      var(--global-card-bg-color);
-    box-shadow: 0 14px 34px rgba(78, 63, 63, 0.08);
-  }
-
-  .home-join h2,
-  .home-stream-card h2 {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin: 0 0 0.75rem;
-    color: var(--global-text-color);
-    font-size: clamp(1.2rem, 1.55vw, 1.55rem);
-    font-weight: 750;
-    line-height: 1.2;
-  }
-
-  .home-join h2::before,
-  .home-stream-card h2::before {
-    content: "";
-    width: 0.58rem;
-    height: 0.58rem;
-    border-radius: 999px;
-    background: var(--home-accent);
-    box-shadow: 0 0 0 0.22rem var(--home-accent-soft);
-  }
-
-  .home-join h2::after,
-  .home-stream-card h2::after {
-    content: "";
-    width: 2.8rem;
-    height: 2px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--home-accent), transparent);
-  }
-
-  .home-join p {
-    margin: 0;
-    color: var(--global-text-color-light);
-    font-size: 0.98rem;
-    font-weight: 500;
-    line-height: 1.55;
-    overflow-wrap: break-word;
-    text-wrap: pretty;
-  }
-
-  .home-join {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(12rem, max-content);
-    gap: 1rem 1.5rem;
-    align-items: center;
-    padding: clamp(1rem, 2.4vw, 1.35rem);
-  }
-
-  .home-join-copy {
-    min-width: 0;
-  }
-
-  .home-join-actions {
-    display: flex;
-    justify-content: center;
-    justify-self: end;
-  }
-
-  .home-join-actions a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    min-width: 11.5rem;
-    min-height: 2.8rem;
-    padding: 0.7rem 1rem;
-    border: 1px solid color-mix(in srgb, var(--home-accent) 48%, var(--global-divider-color));
-    border-radius: 8px;
-    background: color-mix(in srgb, var(--home-accent) 8%, var(--global-card-bg-color));
-    color: var(--home-accent) !important;
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
-    transition:
-      transform 180ms ease,
-      border-color 180ms ease,
-      background 180ms ease;
-  }
-
-  .home-join-actions a:hover {
-    border-color: var(--home-accent);
-    background: color-mix(in srgb, var(--home-accent) 14%, var(--global-card-bg-color));
-    color: var(--home-accent) !important;
-    transform: translateY(-1px);
-  }
-
-  .home-feed-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 2.2rem;
-  }
-
-  .home-feed-grid[hidden] {
-    display: none !important;
-  }
-
-  .home-feed-card {
-    padding: clamp(1rem, 2.4vw, 1.35rem);
-    border: 1px solid var(--global-divider-color);
-    border-radius: 8px;
-    background: var(--global-card-bg-color);
-    box-shadow: 0 12px 30px rgba(78, 63, 63, 0.07);
-  }
-
-  .home-feed-card h2 {
-    margin-top: 0;
-  }
-
-  .home-stream-card {
-    background:
-      linear-gradient(135deg, rgba(231, 153, 176, 0.08), transparent 52%),
-      var(--global-card-bg-color);
-    box-shadow: 0 14px 34px rgba(78, 63, 63, 0.07);
-  }
-
-  .home-stream-card h2 a {
-    color: inherit !important;
-    text-decoration: none;
-  }
-
-  .home-stream-card h2 a:hover {
-    color: var(--home-accent) !important;
-  }
-
-  .home-stream-card .news .table-responsive {
-    overflow: visible;
-  }
-
-  .home-feed-card .news table {
-    margin-bottom: 0;
-  }
-
-  .home-feed-card .news th,
-  .home-feed-card .news td {
-    padding: 0.48rem 0;
-    border-top: 0;
-    color: var(--global-text-color-light);
-    font-size: 0.9rem;
-  }
-
-  .home-feed-card .news th {
-    width: 7rem !important;
-    padding-right: 0.9rem;
-    color: var(--global-text-color);
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .home-feed-card .news-title {
-    color: var(--global-text-color);
+    gap: 0.55rem 1rem;
+    margin-top: 1.45rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.82rem;
     font-weight: 650;
-    text-decoration: none;
   }
 
-  .home-feed-card .news-title:hover {
-    color: var(--home-accent);
-  }
-
-  .home-stream-card .news table {
-    display: block;
-  }
-
-  .home-stream-card .news tbody {
-    display: grid;
-    gap: 0.48rem;
-  }
-
-  .home-stream-card .news tr {
-    display: grid;
-    grid-template-columns: 8.35rem minmax(0, 1fr);
-    gap: 0.55rem;
-    align-items: center;
-    min-height: 2.86rem;
-    padding: 0.48rem 0.85rem;
-    border: 1px solid var(--global-divider-color);
-    border-radius: 8px;
-    background: var(--global-bg-color);
-    transition:
-      border-color 0.2s ease,
-      transform 0.2s ease;
-  }
-
-  .home-stream-card .news tr:hover {
-    border-color: color-mix(in srgb, var(--home-accent) 34%, var(--global-divider-color));
-    transform: translateY(-1px);
-  }
-
-  .home-stream-card .news th,
-  .home-stream-card .news td {
-    display: flex;
-    align-items: center;
-    padding: 0;
-    border: 0;
-    color: var(--global-text-color);
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  .home-stream-card .news th {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    width: 8.35rem !important;
-    color: var(--home-accent);
-    font-size: 0.76rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .home-news-card .news th,
-  .home-posts-card .news th {
-    width: 10.2rem !important;
-    color: var(--home-accent);
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0;
-    text-transform: none;
-  }
-
-  .home-posts-card .news-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .home-stream-card .news-number {
+  .home-meta span {
     display: inline-flex;
-    min-width: 1.9rem;
-    min-height: 1.9rem;
     align-items: center;
-    justify-content: center;
-    border: 1px solid color-mix(in srgb, var(--home-accent) 32%, var(--global-divider-color));
-    border-radius: 999px;
-    color: var(--home-accent);
-    font-weight: 800;
-    letter-spacing: 0;
+    gap: 0.42rem;
   }
 
-  .home-stream-card .news-date {
-    display: inline-block;
-    color: var(--home-accent);
-  }
-
-  .home-stream-card .news-title {
-    display: block;
-    color: var(--global-text-color);
-    font-weight: 700;
-    line-height: 1.42;
-    text-decoration: none;
-    white-space: normal;
-  }
-
-  .home-stream-card .news-title:hover {
-    color: var(--home-accent);
+  .home-meta i {
+    color: color-mix(in srgb, var(--home-accent), white 24%);
   }
 
   @media (max-width: 900px) {
     .home-hero {
-      min-height: 34rem;
+      min-height: 40rem;
+      align-items: flex-start;
     }
 
-    .home-hero__image {
-      width: auto;
-      height: 100%;
-    }
-
-    .home-hero::after {
-      background: linear-gradient(90deg, rgba(62, 45, 51, 0.92), rgba(78, 56, 64, 0.66));
-    }
-
-    .home-grid,
-    .home-feed-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .home-join {
-      grid-template-columns: 1fr;
-    }
-
-    .home-join-actions {
-      justify-self: start;
-      width: 100%;
-    }
-
-    .home-join-actions a {
-      width: min(100%, 16rem);
-    }
-
-    .home-join p {
-      white-space: normal;
-    }
-
-    .home-stream-card .news tr {
-      grid-template-columns: 1fr;
-      gap: 0.35rem;
-      align-items: start;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .home-hero,
-    .home-join,
-    .home-feed-card {
-      width: min(100%, calc(100vw - 1.5rem));
-      max-width: calc(100vw - 1.5rem);
-    }
-
-    .home-hero {
-      min-height: 32rem;
-      padding: 1.25rem;
+    .home-hero__content {
+      width: min(100%, 36rem);
     }
 
     .home-hero__image {
       top: auto;
-      right: 50%;
-      bottom: 0;
-      width: auto;
-      height: 72%;
-      transform: translateX(50%) scaleX(-1);
+      right: -3%;
+      bottom: -8%;
+      height: 92%;
+      transform: scaleX(-1);
+    }
+
+    .home-hero:hover .home-hero__image {
+      transform: scaleX(-1) scale(1.02);
     }
 
     .home-hero::after {
-      background: linear-gradient(180deg, rgba(62, 45, 51, 0.94), rgba(78, 56, 64, 0.68));
+      background: linear-gradient(180deg, rgba(55, 39, 45, 0.96), rgba(77, 54, 62, 0.72) 56%, rgba(140, 117, 110, 0.18));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .home-hero {
+      width: min(100%, calc(100vw - 1.5rem));
+      min-height: 39rem;
+      padding: 1.45rem;
+      border-radius: 14px;
+    }
+
+    .home-title {
+      font-size: clamp(3.8rem, 20vw, 5.5rem);
     }
 
     .home-subtitle {
-      max-width: 100%;
+      font-size: 0.98rem;
+      line-height: 1.62;
     }
 
     .home-actions {
       display: grid;
-      grid-template-columns: 1fr;
-      width: min(100%, 16rem);
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+    }
+
+    .home-meta {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .home-hero__image {
+      right: 50%;
+      bottom: -6%;
+      height: 69%;
+      transform: translateX(50%) scaleX(-1);
+    }
+
+    .home-hero:hover .home-hero__image {
+      transform: translateX(50%) scaleX(-1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-hero__image,
+    .home-actions a {
+      transition: none;
     }
   }
 ---
@@ -546,67 +257,10 @@ _styles: |
         <a href="{{ '/publications/' | relative_url }}"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Publications</a>
         <a href="{{ '/cv/' | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> CV</a>
       </div>
+      <div class="home-meta" aria-label="Academic affiliation">
+        <span><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Westlake University</span>
+        <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Hangzhou, China</span>
+      </div>
     </div>
   </section>
-
-  <div class="home-grid">
-    <aside class="home-join">
-      <div class="home-join-copy">
-        <h2>Open to Collaboration</h2>
-        <p>
-          For discussions and collaborations in quantum molecular dynamics, please feel free to get in touch.
-        </p>
-      </div>
-      <div class="home-join-actions">
-        <a href="mailto:jsczfx1641501004@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact Me</a>
-      </div>
-    </aside>
-  </div>
-
-  <div class="home-feed-grid" id="research" hidden>
-    <section class="home-feed-card home-stream-card home-news-card">
-      <h2>Research Focus</h2>
-      <div class="news">
-        <div class="table-responsive">
-          <table class="table table-sm table-borderless">
-            <tbody>
-              <tr>
-                <th><span class="news-number">#3</span><span class="news-date">Dynamics</span></th>
-                <td><span class="news-title">Nonadiabatic quantum dynamics</span></td>
-              </tr>
-              <tr>
-                <th><span class="news-number">#2</span><span class="news-date">Geometry</span></th>
-                <td><span class="news-title">Local diabatic representations</span></td>
-              </tr>
-              <tr>
-                <th><span class="news-number">#1</span><span class="news-date">Methods</span></th>
-                <td><span class="news-title">Tensor-network quantum dynamics</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section class="home-feed-card home-stream-card home-posts-card">
-      <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Work</a></h2>
-      <div class="news">
-        <div class="table-responsive">
-          <table class="table table-sm table-borderless">
-            <tbody>
-              <tr>
-                <th><span class="news-number">#2</span><span class="news-date">2026 · PCCP</span></th>
-                <td><a class="news-title" href="https://doi.org/10.1039/D5CP03524D" target="_blank" rel="noopener noreferrer">Exponential Convergence of the Local Diabatic Representation</a></td>
-              </tr>
-              <tr>
-                <th><span class="news-number">#1</span><span class="news-date">2026 · arXiv</span></th>
-                <td><a class="news-title" href="https://doi.org/10.48550/arXiv.2601.16913" target="_blank" rel="noopener noreferrer">Coarse-Grained Geometric Quantum Dynamics</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-  </div>
 </div>

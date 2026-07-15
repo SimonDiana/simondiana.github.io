@@ -1,70 +1,42 @@
 {% comment %}
-  Unified publications entry renderer for both formats
+  Numbered academic publication list for both RenderCV and JSONResume formats.
 {% endcomment %}
 
-<ul class="card-text font-weight-light list-group list-group-flush">
+<ol class="cv-publications">
   {% for entry in entries %}
-    <li class="list-group-item">
-      <div class="row">
-        {% capture pub_date %}
-          {% if entry.releaseDate %}{{ entry.releaseDate }}{% elsif entry.date %}{{ entry.date }}{% endif %}
-        {% endcapture %}
-
-        {% if pub_date != '' %}
-          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
-            <table class="table-cv">
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
-                      {{- pub_date | split: '-' | slice: 0, 1 | join: '' -}}
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
-            {% if entry.url %}
-              <h6 class="title font-weight-bold ml-1 ml-md-4">
-                <a href="{{ entry.url }}">{{ entry.title | default: entry.name }}</a>
-              </h6>
-            {% elsif entry.title %}
-              <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title }}</h6>
-            {% endif %}
-
-            {% if entry.publisher %}
-              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">
-                <em>{{ entry.publisher }}</em>
-              </h6>
-            {% endif %}
-
-            {% if entry.summary %}
-              <p class="ml-1 ml-md-4">{{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-            {% endif %}
-          </div>
+    <li class="cv-publication">
+      <span class="cv-publication__number" aria-hidden="true">{{ forloop.index }}</span>
+      <div class="cv-publication__body">
+        {% assign publication_title = entry.title | default: entry.name %}
+        {% if entry.url %}
+          <h4 class="cv-publication__title">
+            <a href="{{ entry.url }}" target="_blank" rel="noopener noreferrer">{{ publication_title }}</a>
+          </h4>
         {% else %}
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            {% if entry.url %}
-              <h6 class="title font-weight-bold ml-1 ml-md-4">
-                <a href="{{ entry.url }}">{{ entry.title | default: entry.name }}</a>
-              </h6>
-            {% elsif entry.title %}
-              <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.title }}</h6>
-            {% endif %}
+          <h4 class="cv-publication__title">{{ publication_title }}</h4>
+        {% endif %}
 
-            {% if entry.publisher %}
-              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">
-                <em>{{ entry.publisher }}</em>
-              </h6>
-            {% endif %}
+        {% if entry.authors %}
+          <p class="cv-publication__authors">{{ entry.authors | join: ', ' }}</p>
+        {% endif %}
 
-            {% if entry.summary %}
-              <p class="ml-1 ml-md-4">{{ entry.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-            {% endif %}
-          </div>
+        <p class="cv-publication__meta">
+          {% if entry.publisher -%}
+            <em>{{ entry.publisher }}</em>
+          {%- endif %}
+          {% if entry.publisher and entry.releaseDate -%}
+            <span aria-hidden="true"> · </span>
+          {%- endif %}
+          {% if entry.releaseDate %}{{ entry.releaseDate | split: '-' | first }}{% elsif entry.date %}{{ entry.date | split: '-' | first }}{% endif %}
+        </p>
+
+        {% if entry.summary %}
+          <details class="cv-publication__abstract">
+            <summary>Abstract</summary>
+            <div>{{ entry.summary | markdownify }}</div>
+          </details>
         {% endif %}
       </div>
     </li>
   {% endfor %}
-</ul>
+</ol>

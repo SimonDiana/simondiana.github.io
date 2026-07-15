@@ -4,7 +4,7 @@ permalink: /links/
 title: Link
 description: Academic profiles and contact channels.
 nav: true
-nav_order: 4
+nav_order: 5
 
 _styles: |
   .links-grid {
@@ -73,6 +73,18 @@ _styles: |
 ---
 
 <div class="links-grid">
+  <a class="link-card" href="https://gu.lab.westlake.edu.cn/" target="_blank" rel="noopener noreferrer">
+    <span class="link-card__icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+    <span><strong>Gu Lab</strong><small>Gu Bing Research Group</small></span>
+    <i class="fa-solid fa-arrow-up-right-from-square link-card__arrow" aria-hidden="true"></i>
+  </a>
+
+  <a class="link-card" href="https://www.westlake.edu.cn/" target="_blank" rel="noopener noreferrer">
+    <span class="link-card__icon"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></span>
+    <span><strong>Westlake University</strong><small>Official website</small></span>
+    <i class="fa-solid fa-arrow-up-right-from-square link-card__arrow" aria-hidden="true"></i>
+  </a>
+
   <a class="link-card" href="mailto:jsczfx1641501004@gmail.com">
     <span class="link-card__icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
     <span><strong>Email</strong><small>jsczfx1641501004@gmail.com</small></span>
@@ -98,7 +110,7 @@ _styles: |
   </a>
 
   <a class="link-card" href="https://space.bilibili.com/10044859" target="_blank" rel="noopener noreferrer">
-    <span class="link-card__icon"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
+    <span class="link-card__icon"><i class="fa-brands fa-bilibili" aria-hidden="true"></i></span>
     <span><strong>Bilibili</strong><small>Video channel</small></span>
     <i class="fa-solid fa-arrow-up-right-from-square link-card__arrow" aria-hidden="true"></i>
   </a>

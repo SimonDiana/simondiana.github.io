@@ -2,6 +2,203 @@
  * CV shared styles
  *****************************/
 
+.cv {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  letter-spacing: 0.003em;
+
+  > .card {
+    padding: clamp(1.2rem, 3vw, 1.8rem) !important;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 14px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--global-accent-color) 7%, transparent), transparent 48%), var(--global-card-bg-color);
+    box-shadow: 0 12px 34px rgba(78, 63, 63, 0.07);
+  }
+
+  .card-title {
+    margin-bottom: 1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--global-divider-color);
+    color: var(--global-text-color);
+    font-size: clamp(1.18rem, 2vw, 1.42rem);
+    font-weight: 750;
+    line-height: 1.25;
+    letter-spacing: -0.012em;
+  }
+
+  .list-group-item {
+    padding: 1.05rem 0;
+    border-color: var(--global-divider-color);
+    background: transparent;
+    color: var(--global-text-color);
+  }
+
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  td,
+  a {
+    overflow-wrap: anywhere;
+  }
+
+  h6 {
+    font-size: 0.98rem !important;
+    line-height: 1.45;
+  }
+
+  p {
+    margin-bottom: 0.65rem;
+  }
+
+  .items {
+    margin: 0.65rem 0 0;
+    padding-left: 1.2rem;
+  }
+
+  .items li {
+    margin: 0.22rem 0;
+  }
+
+  .badge.danger-color-dark {
+    min-width: auto !important;
+    padding: 0.4rem 0.62rem;
+    border: 1px solid color-mix(in srgb, var(--global-accent-color) 46%, var(--global-divider-color));
+    border-radius: 999px;
+    background: var(--global-accent-soft-color) !important;
+    color: var(--global-theme-color) !important;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+
+  .table-cv {
+    width: 100%;
+  }
+
+  .table-cv td {
+    vertical-align: top;
+  }
+}
+
+.cv-publications {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-publication {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.cv-publication:first-child {
+  padding-top: 0.25rem;
+}
+
+.cv-publication:last-child {
+  padding-bottom: 0.25rem;
+  border-bottom: 0;
+}
+
+.cv-publication__number {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--global-accent-color) 58%, var(--global-divider-color));
+  border-radius: 50%;
+  background: var(--global-accent-soft-color);
+  color: var(--global-theme-color);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.cv-publication__body {
+  min-width: 0;
+}
+
+.cv-publication__title {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 750;
+  line-height: 1.48;
+  text-wrap: pretty;
+}
+
+.cv-publication__authors,
+.cv-publication__meta {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cv-publication__authors {
+  color: var(--global-text-color);
+}
+
+.cv-publication__meta {
+  color: var(--global-text-color-light);
+}
+
+.cv-publication__abstract {
+  margin-top: 0.7rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--global-accent-color) 5%, var(--global-bg-color));
+}
+
+.cv-publication__abstract summary {
+  color: var(--global-theme-color);
+  font-size: 0.86rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.cv-publication__abstract div {
+  margin-top: 0.7rem;
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.cv-publication__abstract p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 575.98px) {
+  .cv {
+    font-size: 0.94rem;
+
+    .row > [class*="col-"] {
+      max-width: 100%;
+      flex: 0 0 100%;
+      text-align: left !important;
+    }
+
+    .date-column,
+    .table-cv {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .cv-publication {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .cv-publication__number {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+}
+
 div.container-link-button {
   margin-right: 0.5rem;
 }
@@ -44,7 +241,7 @@ a.btncv:hover {
 
 p.location {
   font-size: 0.7rem;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 i.iconlocation {
