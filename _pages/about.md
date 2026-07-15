@@ -22,12 +22,15 @@ _styles: |
 
   .home-page {
     --home-accent: var(--global-accent-color);
+    width: min(78rem, calc(100vw - 2.5rem));
+    margin-left: 50%;
     margin-top: 0.25rem;
+    transform: translateX(-50%);
   }
 
   .home-hero {
     position: relative;
-    min-height: min(78vh, 46rem);
+    min-height: min(86vh, 55rem);
     display: flex;
     align-items: center;
     padding: clamp(2rem, 6vw, 4.75rem);
@@ -46,10 +49,10 @@ _styles: |
   .home-hero__image {
     position: absolute;
     top: 50%;
-    right: -1%;
+    right: -4%;
     z-index: -3;
     width: auto;
-    height: 116%;
+    height: 132%;
     transform: translateY(-50%) scaleX(-1);
     transform-origin: center;
     transition: transform 900ms cubic-bezier(0.2, 0.75, 0.2, 1);
@@ -83,7 +86,7 @@ _styles: |
   }
 
   .home-hero__content {
-    width: min(58%, 38rem);
+    width: min(54%, 40rem);
     min-width: 0;
     color: #fff;
   }
@@ -155,24 +158,26 @@ _styles: |
     flex-wrap: wrap;
     gap: 0.55rem 1rem;
     margin-top: 1.45rem;
-    color: rgba(255, 255, 255, 0.78);
-    font-size: 0.82rem;
-    font-weight: 650;
+    color: rgba(255, 255, 255, 0.94) !important;
+    font-size: 0.88rem;
+    font-weight: 720;
+    text-shadow: 0 2px 12px rgba(32, 19, 23, 0.62);
   }
 
   .home-meta span {
     display: inline-flex;
     align-items: center;
     gap: 0.42rem;
+    color: rgba(255, 255, 255, 0.94) !important;
   }
 
   .home-meta i {
-    color: color-mix(in srgb, var(--home-accent), white 24%);
+    color: color-mix(in srgb, var(--home-accent), white 36%) !important;
   }
 
   @media (max-width: 900px) {
     .home-hero {
-      min-height: 40rem;
+      min-height: 46rem;
       align-items: flex-start;
     }
 
@@ -184,7 +189,7 @@ _styles: |
       top: auto;
       right: -3%;
       bottom: -8%;
-      height: 92%;
+      height: 104%;
       transform: scaleX(-1);
     }
 
@@ -198,9 +203,15 @@ _styles: |
   }
 
   @media (max-width: 560px) {
+    .home-page {
+      width: 100%;
+      margin-left: 0;
+      transform: none;
+    }
+
     .home-hero {
-      width: min(100%, calc(100vw - 1.5rem));
-      min-height: 39rem;
+      width: 100%;
+      min-height: 42rem;
       padding: 1.45rem;
       border-radius: 14px;
     }
@@ -228,7 +239,7 @@ _styles: |
     .home-hero__image {
       right: 50%;
       bottom: -6%;
-      height: 69%;
+      height: 76%;
       transform: translateX(50%) scaleX(-1);
     }
 
@@ -251,7 +262,7 @@ _styles: |
     <div class="home-hero__content">
       <h1 class="home-title">Mo Sha</h1>
       <p class="home-subtitle">
-        Ph.D. student in Chemistry at Westlake University, developing theoretical and computational methods for strongly coupled electron-nuclear dynamics.
+        Ph.D. student in Chemistry at Westlake University, developing tensor-network methods for large-scale quantum dynamics and quantum geometric molecular dynamics.
       </p>
       <div class="home-actions">
         <a href="{{ '/publications/' | relative_url }}"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Publications</a>

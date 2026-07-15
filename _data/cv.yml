@@ -2,8 +2,6 @@ cv:
   name: Mo Sha
   email: jsczfx1641501004@gmail.com
   location: Hangzhou, Zhejiang, China
-  image: ""
-  summary: Ph.D. student at Westlake University working on theoretical chemistry, nonadiabatic quantum dynamics, local diabatic representations, and tensor-network methods.
 
   social_networks:
     - network: GitHub
@@ -14,54 +12,46 @@ cv:
       - institution: Westlake University
         location: Hangzhou, Zhejiang, China
         area: Chemistry
-        studyType: Ph.D.
-        start_date: 2024-08
-        end_date: 2029-06 (expected)
+        degree: Ph.D.
+        date: 2024-08 – 2029-06 (expected)
         highlights:
           - "Advisor: Prof. Bing Gu"
+          - "Dissertation: Large-Scale Quantum Geometric Molecular Dynamics"
 
       - institution: Soochow University
         location: Suzhou, Jiangsu, China
         area: Chemistry (Education)
-        studyType: B.S.
-        start_date: 2020-09
-        end_date: 2024-06
+        degree: B.S.
+        date: 2020-09 – 2024-06
         highlights:
           - "Advisor: Prof. Xiaoguang Bao"
-          - "GPA: 3.83/4.00; Rank: 1/27"
 
     Publications:
       - title: Exponential Convergence of the Local Diabatic Representation for Nonadiabatic Eigenvalue Problems
         authors:
           - Mo Sha
           - Bing Gu
-        publisher: Physical Chemistry Chemical Physics 28, 9726-9744
-        releaseDate: 2026
+        journal: Physical Chemistry Chemical Physics, 28(15), 9726–9744
+        date: "2026"
+        doi: 10.1039/D5CP03524D
         url: https://doi.org/10.1039/D5CP03524D
-        summary: >-
-          Discrete variable local diabatic representation (LDR) provides a divergence-free framework for exact conical intersection dynamics simulation. In this work, we investigate the convergence with respect to the number of “nuclear” grid points and “electronic” states of LDR for the eigenvalue problems using coupled oscillator models and a conical intersection model. The performance of LDR is compared with traditional approaches based on the Born–Huang ansatz and with the crude adiabatic representation. Our results demonstrate that for weak vibronic couplings, LDR shows a similar convergence rate to the exact Born–Huang representation including not only the first-order derivative couplings but also the diagonal Born–Oppenheimer corrections and second-order derivative couplings. For strong but non-diverging vibronic couplings, LDR shows a significantly faster convergence rate with respect to the number of grid points, hence the number of electronic structure computations, than the exact Born–Huang representation. The diagonal Born–Oppenheimer corrections and second-order derivative couplings are found to be important in the Born–Huang framework. For the conical intersection model, while the Born–Huang representation simply does not converge due to diverging derivative couplings, the LDR remains highly accurate and converges exponentially fast. The crude adiabatic representation in general shows a much slower convergence rate in all cases.
 
       - title: Coarse-Grained Geometric Quantum Dynamics in the Tensor Network Representation
         authors:
           - Mo Sha
           - Bing Gu
-        publisher: arXiv:2601.16913
-        releaseDate: 2026-01-23
+        journal: arXiv:2601.16913
+        date: "2026-01-23"
+        doi: 10.48550/arXiv.2601.16913
         url: https://doi.org/10.48550/arXiv.2601.16913
 
     Awards:
-      - title: Outstanding Graduate of Soochow University
-        date: 2024
-        awarder: Soochow University
+      - name: Outstanding Graduate of Soochow University
+        date: "2024"
+        location: Soochow University
 
     Skills:
-      - name: Programming Languages
-        icon: fa-solid fa-code
-        keywords:
-          - Python
-          - Java
-          - Pascal
-      - name: Scientific Typesetting
-        icon: fa-solid fa-file-code
-        keywords:
-          - LaTeX
+      - label: Programming Languages
+        details: Python, Java, Pascal
+      - label: Scientific Typesetting
+        details: LaTeX

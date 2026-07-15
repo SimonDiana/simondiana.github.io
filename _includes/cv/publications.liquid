@@ -21,21 +21,16 @@
         {% endif %}
 
         <p class="cv-publication__meta">
-          {% if entry.publisher -%}
+          {% if entry.journal -%}
+            <em>{{ entry.journal }}</em>
+          {%- elsif entry.publisher -%}
             <em>{{ entry.publisher }}</em>
           {%- endif %}
-          {% if entry.publisher and entry.releaseDate -%}
+          {% if entry.journal or entry.publisher %}
             <span aria-hidden="true"> · </span>
-          {%- endif %}
+          {% endif %}
           {% if entry.releaseDate %}{{ entry.releaseDate | split: '-' | first }}{% elsif entry.date %}{{ entry.date | split: '-' | first }}{% endif %}
         </p>
-
-        {% if entry.summary %}
-          <details class="cv-publication__abstract">
-            <summary>Abstract</summary>
-            <div>{{ entry.summary | markdownify }}</div>
-          </details>
-        {% endif %}
       </div>
     </li>
   {% endfor %}
