@@ -8,6 +8,10 @@ body {
   padding-bottom: 70px;
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
+  background-image:
+    radial-gradient(circle at 8% 0%, var(--global-page-glow-primary), transparent 30rem),
+    radial-gradient(circle at 92% 100%, var(--global-page-glow-secondary), transparent 34rem);
+  background-attachment: fixed;
 
   h1,
   h2,
