@@ -3,8 +3,10 @@ layout: about
 title: Home
 permalink: /
 subtitle:
+custom_home: true
 
 profile: false
+
 selected_papers: false
 social: false
 
@@ -21,461 +23,589 @@ _styles: |
 
   .home-page {
     --home-accent: #e799b0;
-    --home-accent-strong: #df7898;
-    --home-accent-soft: rgba(231, 153, 176, 0.13);
+    --home-accent-soft: rgba(231, 153, 176, 0.12);
     margin-top: 0.25rem;
   }
 
   .home-hero {
     position: relative;
-    min-height: min(72vh, 44rem);
+    min-height: min(72vh, 42rem);
     display: flex;
     align-items: center;
-    margin-bottom: 2.25rem;
-    padding: clamp(2rem, 7vw, 5rem);
+    margin: 0 0 2.2rem;
+    padding: clamp(2rem, 6vw, 4.5rem);
     overflow: hidden;
-    border: 1px solid rgba(91, 78, 86, 0.18);
-    border-radius: 0.9rem;
-    background: #f8f4f6;
-    box-shadow: 0 1.6rem 4.5rem rgba(46, 37, 42, 0.13);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(47, 111, 115, 0.28), rgba(231, 153, 176, 0.18)),
+      var(--global-card-bg-color);
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.14);
     isolation: isolate;
   }
 
   .home-hero__image {
     position: absolute;
-    inset: 0;
+    top: 50%;
+    right: 0;
     z-index: -3;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 43%;
-    transform: scaleX(-1);
+    width: min(46rem, 72vw);
+    height: auto;
+    transform: translateY(-50%) scaleX(-1);
   }
 
   .home-hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -2;
-    background: linear-gradient(
-      90deg,
-      rgba(25, 34, 38, 0.93) 0%,
-      rgba(33, 39, 44, 0.82) 32%,
-      rgba(46, 43, 48, 0.52) 54%,
-      rgba(63, 49, 57, 0.08) 82%
-    );
+    z-index: -1;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(90deg, black, transparent 78%);
   }
 
   .home-hero::after {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
-    opacity: 0.22;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
-    background-size: 4rem 4rem;
-    mask-image: linear-gradient(90deg, #000, transparent 72%);
+    z-index: -2;
+    background: linear-gradient(90deg, rgba(17, 25, 29, 0.84), rgba(17, 25, 29, 0.55) 42%, rgba(17, 25, 29, 0.12) 78%);
   }
 
   .home-hero__content {
-    width: min(100%, 43rem);
+    width: min(100%, 46rem);
+    color: #fff;
   }
 
   .home-kicker {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.85rem;
-    margin: 0 0 1.25rem;
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 0.8rem;
+    gap: 0.7rem;
+    margin: 0 0 1rem;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.82rem;
     font-weight: 800;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
   .home-kicker::before {
     content: "";
-    width: 2.8rem;
+    width: 2.4rem;
     height: 1px;
-    background: rgba(255, 255, 255, 0.66);
+    background: currentColor;
+    opacity: 0.7;
   }
 
   .home-title {
     margin: 0;
     color: #fff;
-    font-size: clamp(4rem, 9vw, 7rem);
-    font-weight: 300;
-    line-height: 0.96;
-    letter-spacing: -0.045em;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: 0;
   }
 
   .home-subtitle {
-    max-width: 39rem;
-    margin: 1.5rem 0 0;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: clamp(1rem, 1.8vw, 1.22rem);
-    line-height: 1.75;
+    max-width: 33rem;
+    margin: 1.15rem 0 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(1rem, 1.6vw, 1.18rem);
+    line-height: 1.66;
   }
 
   .home-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-top: 1.8rem;
+    margin-top: 1.55rem;
   }
 
   .home-actions a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
-    min-height: 3rem;
-    padding: 0.75rem 1.15rem;
-    border: 1px solid rgba(255, 255, 255, 0.23);
-    border-radius: 0.7rem;
-    background: rgba(78, 75, 82, 0.55);
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    padding: 0.72rem 1.05rem;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.14);
     color: #fff !important;
-    font-size: 0.94rem;
-    font-weight: 750;
+    font-size: 0.92rem;
+    font-weight: 700;
     text-decoration: none !important;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
     transition:
       transform 180ms ease,
-      border-color 180ms ease,
       background 180ms ease,
       box-shadow 180ms ease;
   }
 
   .home-actions a:first-child {
-    border-color: var(--home-accent);
+    border-color: color-mix(in srgb, var(--home-accent), white 26%);
     background: var(--home-accent);
-    box-shadow: 0 0.85rem 2rem rgba(231, 153, 176, 0.28);
+    box-shadow: 0 16px 34px rgba(231, 153, 176, 0.28);
   }
 
   .home-actions a:hover {
-    border-color: rgba(255, 255, 255, 0.54);
-    background: rgba(231, 153, 176, 0.78);
     transform: translateY(-2px);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
   }
 
-  .home-tags {
+  .home-signal-strip {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.55rem;
-    margin-top: 1.45rem;
+    gap: 0.45rem;
+    margin-top: 1.35rem;
   }
 
-  .home-tags span {
-    padding: 0.38rem 0.68rem;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    border-radius: 0.55rem;
-    background: rgba(57, 60, 65, 0.34);
-    color: rgba(255, 255, 255, 0.9);
-    font-family: "SFMono-Regular", Consolas, monospace;
-    font-size: 0.75rem;
-    font-weight: 700;
-    backdrop-filter: blur(8px);
-  }
-
-  .home-panel {
-    border: 1px solid var(--global-divider-color);
-    border-radius: 0.8rem;
-    background:
-      linear-gradient(135deg, var(--home-accent-soft), transparent 48%),
-      var(--global-card-bg-color);
-    box-shadow: 0 0.8rem 2.5rem rgba(40, 32, 36, 0.05);
-  }
-
-  .home-collaboration {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 1.5rem;
+  .home-signal-strip span {
+    display: inline-flex;
+    min-height: 1.75rem;
     align-items: center;
-    margin-bottom: 2.1rem;
-    padding: clamp(1.3rem, 3vw, 1.8rem);
+    padding: 0.32rem 0.55rem;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.88);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.76rem;
+    font-weight: 700;
   }
 
-  .home-section-title {
+  .home-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    margin: 1.25rem 0 2.2rem;
+  }
+
+  .home-join {
+    border: 1px solid var(--global-divider-color);
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, var(--home-accent-soft), transparent 46%),
+      var(--global-card-bg-color);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.06);
+  }
+
+  .home-join h2,
+  .home-stream-card h2 {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    margin: 0 0 0.8rem;
+    gap: 0.6rem;
+    margin: 0 0 0.75rem;
     color: var(--global-text-color);
-    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
-    font-weight: 780;
+    font-size: clamp(1.2rem, 1.55vw, 1.55rem);
+    font-weight: 750;
+    line-height: 1.2;
   }
 
-  .home-section-title::before {
+  .home-join h2::before,
+  .home-stream-card h2::before {
     content: "";
-    width: 0.65rem;
-    height: 0.65rem;
-    border-radius: 50%;
+    width: 0.58rem;
+    height: 0.58rem;
+    border-radius: 999px;
     background: var(--home-accent);
-    box-shadow: 0 0 0 0.3rem var(--home-accent-soft);
+    box-shadow: 0 0 0 0.22rem var(--home-accent-soft);
   }
 
-  .home-section-title::after {
+  .home-join h2::after,
+  .home-stream-card h2::after {
     content: "";
-    width: 3rem;
+    width: 2.8rem;
     height: 2px;
+    border-radius: 999px;
     background: linear-gradient(90deg, var(--home-accent), transparent);
   }
 
-  .home-collaboration p {
+  .home-join p {
     margin: 0;
     color: var(--global-text-color-light);
-    line-height: 1.65;
+    font-size: 0.98rem;
+    font-weight: 500;
+    line-height: 1.55;
+    white-space: nowrap;
   }
 
-  .home-outline-button {
+  .home-join {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, max-content);
+    gap: 1rem 1.5rem;
+    align-items: center;
+    padding: clamp(1rem, 2.4vw, 1.35rem);
+  }
+
+  .home-join-copy {
+    min-width: 0;
+  }
+
+  .home-join-actions {
+    display: flex;
+    justify-content: center;
+    justify-self: end;
+  }
+
+  .home-join-actions a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.55rem;
-    min-height: 3rem;
-    padding: 0.75rem 1.2rem;
-    border: 1px solid color-mix(in srgb, var(--home-accent) 66%, var(--global-divider-color));
-    border-radius: 0.65rem;
-    background: color-mix(in srgb, var(--home-accent) 6%, var(--global-card-bg-color));
-    color: var(--home-accent-strong) !important;
-    font-weight: 760;
-    text-decoration: none !important;
+    gap: 0.5rem;
+    min-width: 11.5rem;
+    min-height: 2.8rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--home-accent) 48%, var(--global-divider-color));
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--home-accent) 8%, var(--global-card-bg-color));
+    color: var(--home-accent) !important;
+    font-weight: 700;
+    text-decoration: none;
     white-space: nowrap;
     transition:
       transform 180ms ease,
+      border-color 180ms ease,
       background 180ms ease;
   }
 
-  .home-outline-button:hover {
-    background: var(--home-accent-soft);
-    transform: translateY(-2px);
+  .home-join-actions a:hover {
+    border-color: var(--home-accent);
+    background: color-mix(in srgb, var(--home-accent) 14%, var(--global-card-bg-color));
+    color: var(--home-accent) !important;
+    transform: translateY(-1px);
   }
 
   .home-feed-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
-    margin-bottom: 2rem;
+    gap: 1rem;
+    margin-top: 2.2rem;
   }
 
   .home-feed-card {
-    padding: clamp(1.25rem, 3vw, 1.75rem);
+    padding: clamp(1rem, 2.4vw, 1.35rem);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 8px;
+    background: var(--global-card-bg-color);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
   }
 
-  .home-list {
-    display: grid;
-    gap: 0.7rem;
-    margin: 1.1rem 0 0;
-    padding: 0;
-    list-style: none;
+  .home-feed-card h2 {
+    margin-top: 0;
   }
 
-  .home-list li,
-  .home-list a {
-    color: var(--global-text-color);
+  .home-stream-card {
+    background:
+      linear-gradient(135deg, rgba(231, 153, 176, 0.08), transparent 52%),
+      var(--global-card-bg-color);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.05);
+  }
+
+  .home-stream-card h2 a {
+    color: inherit !important;
     text-decoration: none;
   }
 
-  .home-list li {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 0.8rem;
-    align-items: center;
-    min-height: 3.3rem;
-    padding: 0.6rem 0.85rem;
-    border: 1px solid var(--global-divider-color);
-    border-radius: 0.65rem;
-    background: var(--global-bg-color);
-    transition:
-      border-color 180ms ease,
-      transform 180ms ease;
+  .home-stream-card h2 a:hover {
+    color: var(--home-accent) !important;
   }
 
-  .home-list li:hover {
-    border-color: color-mix(in srgb, var(--home-accent) 64%, var(--global-divider-color));
+  .home-stream-card .news .table-responsive {
+    overflow: visible;
+  }
+
+  .home-feed-card .news table {
+    margin-bottom: 0;
+  }
+
+  .home-feed-card .news th,
+  .home-feed-card .news td {
+    padding: 0.48rem 0;
+    border-top: 0;
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+  }
+
+  .home-feed-card .news th {
+    width: 7rem !important;
+    padding-right: 0.9rem;
+    color: var(--global-text-color);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .home-feed-card .news-title {
+    color: var(--global-text-color);
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .home-feed-card .news-title:hover {
+    color: var(--home-accent);
+  }
+
+  .home-stream-card .news table {
+    display: block;
+  }
+
+  .home-stream-card .news tbody {
+    display: grid;
+    gap: 0.48rem;
+  }
+
+  .home-stream-card .news tr {
+    display: grid;
+    grid-template-columns: 8.35rem minmax(0, 1fr);
+    gap: 0.55rem;
+    align-items: center;
+    min-height: 2.86rem;
+    padding: 0.48rem 0.85rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 8px;
+    background: var(--global-bg-color);
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .home-stream-card .news tr:hover {
+    border-color: color-mix(in srgb, var(--home-accent) 34%, var(--global-divider-color));
     transform: translateY(-1px);
   }
 
-  .home-list__number {
-    display: grid;
-    min-width: 2.1rem;
-    height: 2.1rem;
-    place-items: center;
-    border: 1px solid color-mix(in srgb, var(--home-accent) 42%, var(--global-divider-color));
-    border-radius: 50%;
-    color: var(--home-accent-strong);
-    font-size: 0.78rem;
-    font-weight: 800;
-  }
-
-  .home-list__content {
-    min-width: 0;
-  }
-
-  .home-list__content strong {
-    display: block;
-    color: var(--global-text-color);
-    font-size: 0.92rem;
-  }
-
-  .home-list__content span {
-    display: block;
-    margin-top: 0.15rem;
-    color: var(--home-accent-strong);
-    font-size: 0.74rem;
-    font-weight: 700;
-  }
-
-  .home-social-row {
+  .home-stream-card .news th,
+  .home-stream-card .news td {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.65rem;
-    padding: 0.8rem 0 0.2rem;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    color: var(--global-text-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 
-  .home-social-row a {
-    display: inline-flex;
+  .home-stream-card .news th {
+    display: flex;
     align-items: center;
     gap: 0.45rem;
-    padding: 0.55rem 0.75rem;
-    border-radius: 0.55rem;
-    color: var(--global-text-color-light);
-    font-size: 0.82rem;
+    width: 8.35rem !important;
+    color: var(--home-accent);
+    font-size: 0.76rem;
     font-weight: 700;
-    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  .home-social-row a:hover {
-    background: var(--home-accent-soft);
-    color: var(--home-accent-strong);
-    text-decoration: none;
+  .home-news-card .news th,
+  .home-posts-card .news th {
+    width: 10.2rem !important;
+    color: var(--home-accent);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
-  @media (max-width: 820px) {
+  .home-posts-card .news-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .home-stream-card .news-number {
+    display: inline-flex;
+    min-width: 1.9rem;
+    min-height: 1.9rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--home-accent) 32%, var(--global-divider-color));
+    border-radius: 999px;
+    color: var(--home-accent);
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  .home-stream-card .news-date {
+    display: inline-block;
+    color: var(--home-accent);
+  }
+
+  .home-stream-card .news-title {
+    display: block;
+    color: var(--global-text-color);
+    font-weight: 700;
+    line-height: 1.42;
+    text-decoration: none;
+    white-space: normal;
+  }
+
+  .home-stream-card .news-title:hover {
+    color: var(--home-accent);
+  }
+
+  @media (max-width: 900px) {
     .home-hero {
-      min-height: 36rem;
-      padding: 2rem;
+      min-height: 34rem;
     }
 
-    .home-hero::before {
-      background: linear-gradient(90deg, rgba(25, 34, 38, 0.94), rgba(35, 39, 44, 0.72));
+    .home-hero__image {
+      width: auto;
+      height: 100%;
     }
 
-    .home-collaboration,
+    .home-hero::after {
+      background: linear-gradient(90deg, rgba(17, 25, 29, 0.9), rgba(17, 25, 29, 0.62));
+    }
+
+    .home-grid,
     .home-feed-grid {
       grid-template-columns: 1fr;
     }
 
-    .home-outline-button {
-      width: fit-content;
+    .home-join {
+      grid-template-columns: 1fr;
+    }
+
+    .home-join-actions {
+      justify-self: start;
+      width: 100%;
+    }
+
+    .home-join-actions a {
+      width: min(100%, 16rem);
+    }
+
+    .home-join p {
+      white-space: normal;
+    }
+
+    .home-stream-card .news tr {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+      align-items: start;
     }
   }
 
   @media (max-width: 560px) {
+    .home-hero,
+    .home-join,
+    .home-feed-card {
+      width: min(100%, calc(100vw - 1.5rem));
+      max-width: calc(100vw - 1.5rem);
+    }
+
     .home-hero {
-      min-height: 34rem;
-      padding: 1.35rem;
-      border-radius: 0.75rem;
+      min-height: 32rem;
+      padding: 1.25rem;
     }
 
     .home-hero__image {
-      object-position: 42% center;
+      top: auto;
+      right: 50%;
+      bottom: 0;
+      width: auto;
+      height: 72%;
+      transform: translateX(50%) scaleX(-1);
     }
 
-    .home-hero::before {
-      background: linear-gradient(180deg, rgba(25, 34, 38, 0.92), rgba(39, 41, 47, 0.58));
+    .home-hero::after {
+      background: linear-gradient(180deg, rgba(17, 25, 29, 0.92), rgba(17, 25, 29, 0.64));
     }
 
-    .home-title {
-      font-size: clamp(3.7rem, 19vw, 5.2rem);
+    .home-subtitle {
+      max-width: 100%;
     }
 
     .home-actions {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .home-tags {
-      gap: 0.4rem;
-    }
-
-    .home-tags span {
-      font-size: 0.66rem;
+      grid-template-columns: 1fr;
+      width: min(100%, 16rem);
     }
   }
 ---
 
 <div class="home-page">
-  <section class="home-hero" aria-labelledby="home-title">
+  <section class="home-hero" aria-label="Mo Sha home">
     <img class="home-hero__image" src="{{ '/assets/img/home-hero.jpg' | relative_url }}" alt="" aria-hidden="true">
     <div class="home-hero__content">
       <p class="home-kicker">Theoretical Chemistry · Quantum Dynamics</p>
-      <h1 class="home-title" id="home-title">Mo Sha</h1>
+      <h1 class="home-title">Mo Sha</h1>
       <p class="home-subtitle">
         Ph.D. student in Chemistry at Westlake University, developing theoretical and computational methods for strongly coupled electron-nuclear dynamics.
       </p>
-      <div class="home-actions" aria-label="Primary navigation">
+      <div class="home-actions">
         <a href="#research"><i class="fa-solid fa-wave-square" aria-hidden="true"></i> Research</a>
         <a href="{{ '/publications/' | relative_url }}"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Publications</a>
         <a href="{{ '/cv/' | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> CV</a>
       </div>
-      <div class="home-tags" aria-label="Research keywords">
-        <span>nonadiabatic.qm</span>
-        <span>local_diabatic.md</span>
-        <span>tensor_networks.yml</span>
+      <div class="home-signal-strip" aria-label="Research signals">
+        <span>nonadiabatic.md</span>
+        <span>local_diabatic.yml</span>
+        <span>tensor_networks.ai</span>
       </div>
     </div>
   </section>
 
-  <section class="home-panel home-collaboration">
-    <div>
-      <h2 class="home-section-title">Open to Collaboration</h2>
-      <p>Interested in nonadiabatic dynamics, quantum geometry, or tensor-network methods? I would be glad to discuss related ideas and possible collaborations.</p>
-    </div>
-    <a class="home-outline-button" href="mailto:jsczfx1641501004@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact Me</a>
-  </section>
-
-  <div class="home-feed-grid" id="research">
-    <section class="home-panel home-feed-card">
-      <h2 class="home-section-title">Research Focus</h2>
-      <ul class="home-list">
-        <li>
-          <span class="home-list__number">01</span>
-          <span class="home-list__content"><strong>Nonadiabatic Quantum Dynamics</strong><span>electron–nuclear coupling</span></span>
-        </li>
-        <li>
-          <span class="home-list__number">02</span>
-          <span class="home-list__content"><strong>Local Diabatic Representations</strong><span>stable and convergent structure</span></span>
-        </li>
-        <li>
-          <span class="home-list__number">03</span>
-          <span class="home-list__content"><strong>Tensor-Network Methods</strong><span>high-dimensional quantum dynamics</span></span>
-        </li>
-      </ul>
-    </section>
-
-    <section class="home-panel home-feed-card">
-      <h2 class="home-section-title">Selected Work</h2>
-      <ul class="home-list">
-        <li>
-          <span class="home-list__number">#2</span>
-          <a class="home-list__content" href="https://doi.org/10.1039/D5CP03524D" target="_blank" rel="noopener noreferrer"><strong>Exponential Convergence of the Local Diabatic Representation</strong><span>PCCP · 2026</span></a>
-        </li>
-        <li>
-          <span class="home-list__number">#1</span>
-          <a class="home-list__content" href="https://doi.org/10.48550/arXiv.2601.16913" target="_blank" rel="noopener noreferrer"><strong>Coarse-Grained Geometric Quantum Dynamics</strong><span>arXiv · 2026</span></a>
-        </li>
-      </ul>
-    </section>
+  <div class="home-grid">
+    <aside class="home-join">
+      <div class="home-join-copy">
+        <h2>Open to Collaboration</h2>
+        <p>
+          For discussions and collaborations in quantum molecular dynamics, please feel free to get in touch.
+        </p>
+      </div>
+      <div class="home-join-actions">
+        <a href="mailto:jsczfx1641501004@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact Me</a>
+      </div>
+    </aside>
   </div>
 
-  <nav class="home-social-row" aria-label="Academic profiles">
-    <a href="https://scholar.google.com/citations?user=dn2UfYoAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer"><i class="ai ai-google-scholar" aria-hidden="true"></i> Scholar</a>
-    <a href="https://orcid.org/0009-0003-1717-4517" target="_blank" rel="noopener noreferrer"><i class="ai ai-orcid" aria-hidden="true"></i> ORCID</a>
-    <a href="https://github.com/SimonDiana" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
-    <a href="https://space.bilibili.com/10044859" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-play" aria-hidden="true"></i> Bilibili</a>
-  </nav>
+  <div class="home-feed-grid" id="research">
+    <section class="home-feed-card home-stream-card home-news-card">
+      <h2>Research Focus</h2>
+      <div class="news">
+        <div class="table-responsive">
+          <table class="table table-sm table-borderless">
+            <tbody>
+              <tr>
+                <th><span class="news-number">#3</span><span class="news-date">Dynamics</span></th>
+                <td><span class="news-title">Nonadiabatic quantum dynamics</span></td>
+              </tr>
+              <tr>
+                <th><span class="news-number">#2</span><span class="news-date">Geometry</span></th>
+                <td><span class="news-title">Local diabatic representations</span></td>
+              </tr>
+              <tr>
+                <th><span class="news-number">#1</span><span class="news-date">Methods</span></th>
+                <td><span class="news-title">Tensor-network quantum dynamics</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-feed-card home-stream-card home-posts-card">
+      <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Work</a></h2>
+      <div class="news">
+        <div class="table-responsive">
+          <table class="table table-sm table-borderless">
+            <tbody>
+              <tr>
+                <th><span class="news-number">#2</span><span class="news-date">2026 · PCCP</span></th>
+                <td><a class="news-title" href="https://doi.org/10.1039/D5CP03524D" target="_blank" rel="noopener noreferrer">Exponential Convergence of the Local Diabatic Representation</a></td>
+              </tr>
+              <tr>
+                <th><span class="news-number">#1</span><span class="news-date">2026 · arXiv</span></th>
+                <td><a class="news-title" href="https://doi.org/10.48550/arXiv.2601.16913" target="_blank" rel="noopener noreferrer">Coarse-Grained Geometric Quantum Dynamics</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
