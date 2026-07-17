@@ -26,6 +26,21 @@ cv:
         highlights:
           - "Advisor: Prof. Xiaoguang Bao"
 
+    Teaching Experience:
+      - company: Westlake University
+        position: Teaching Assistant, Physical Chemistry I
+        date: Sep. 2025 – Jan. 2026
+        location: Hangzhou, Zhejiang, China
+        highlights:
+          - Assisted course instruction through problem-solving guidance, assessment support, and student consultation.
+
+      - company: Suzhou Tianjiabing Experimental High School
+        position: Student Teacher, Chemistry
+        date: Sep. 2023 – Dec. 2023
+        location: Suzhou, Jiangsu, China
+        highlights:
+          - Completed a school-based chemistry teaching practicum involving lesson preparation, classroom instruction, and student support.
+
     Publications:
       - title: Exponential Convergence of the Local Diabatic Representation for Nonadiabatic Eigenvalue Problems
         authors:

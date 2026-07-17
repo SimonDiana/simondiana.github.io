@@ -1,0 +1,51 @@
+{% comment %} Academic teaching entries for RenderCV ExperienceEntry data. {% endcomment %}
+
+<ul class="cv-teaching">
+  {% for entry in entries %}
+    {% capture institution %}{% if entry.company %}{{ entry.company }}{% elsif entry.organization %}{{ entry.organization }}{% elsif entry.name %}{{ entry.name }}{% endif %}{% endcapture %}
+    {% capture start_date %}{% if entry.start_date %}{{ entry.start_date }}{% elsif entry.startDate %}{{ entry.startDate }}{% endif %}{% endcapture %}
+    {% capture end_date %}{% if entry.end_date %}{{ entry.end_date }}{% elsif entry.endDate %}{{ entry.endDate }}{% endif %}{% endcapture %}
+    {% capture teaching_date %}
+      {% if entry.date %}
+        {{ entry.date }}
+      {% elsif start_date != '' %}
+        {{ start_date }} – {{ end_date | default: 'Present' }}
+      {% endif %}
+    {% endcapture %}
+
+    <li class="cv-teaching__entry">
+      <div class="cv-teaching__rail" aria-hidden="true">
+        <span><i class="fa-solid fa-person-chalkboard"></i></span>
+      </div>
+
+      <div class="cv-teaching__body">
+        <div class="cv-teaching__heading">
+          <h4 class="cv-teaching__role">{{ entry.position }}</h4>
+          {% if teaching_date != '' -%}
+            <span class="cv-teaching__date">{{ teaching_date | strip }}</span>
+          {%- endif %}
+        </div>
+
+        {% if institution != '' %}
+          <p class="cv-teaching__institution">{{ institution | strip }}</p>
+        {% endif %}
+
+        {% if entry.location %}
+          <p class="cv-teaching__location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ entry.location }}</p>
+        {% endif %}
+
+        {% if entry.summary %}
+          <div class="cv-teaching__summary">{{ entry.summary | markdownify }}</div>
+        {% endif %}
+
+        {% if entry.highlights %}
+          <ul class="cv-teaching__highlights">
+            {% for item in entry.highlights %}
+              <li>{{ item | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </li>
+  {% endfor %}
+</ul>
