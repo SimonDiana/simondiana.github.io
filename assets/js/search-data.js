@@ -11,7 +11,7 @@ ninja.data = [{
     },
   },{id: "nav-blog",
           title: "Blog",
-          description: "",
+          description: "Research notes, publication journeys, and occasional reflections.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/blog/";
@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/links/";
           },
-        },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
+        },{id: "post-两篇论文的投稿时间线-修改-转投与再次出发",
+        
+          title: "两篇论文的投稿时间线：修改、转投与再次出发",
+        
+        description: "记录两项工作的投稿、修改与转投历程，以及同行评审之外那些漫长但重要的等待。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/two-papers-submission-timeline/";
+          
+        },
+      },{id: "post-google-gemini-updates-flash-1-5-gemma-2-and-project-astra",
         
           title: 'Google Gemini updates: Flash 1.5, Gemma 2 and Project Astra <svg width="1.2rem" height="1.2rem" top=".5rem" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M17 13.5v6H5v-12h6m3-3h6v6m0-6-9 9" class="icon_svg-stroke" stroke="#999" stroke-width="1.5" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
         
