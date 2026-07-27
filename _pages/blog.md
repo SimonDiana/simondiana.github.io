@@ -4,58 +4,10 @@ permalink: /blog/
 title: Blog
 nav: true
 nav_order: 1
-description: Research notes, publication journeys, and occasional reflections.
 _styles: |
   .blog-index {
     --blog-accent: #e799b0;
     margin-top: 1rem;
-  }
-
-  .blog-index__intro {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 1.6rem;
-    padding: clamp(1.35rem, 4vw, 2.25rem);
-    border: 1px solid color-mix(in srgb, var(--blog-accent) 36%, var(--global-divider-color));
-    border-radius: 16px;
-    background:
-      radial-gradient(circle at 92% 12%, color-mix(in srgb, var(--blog-accent) 23%, transparent), transparent 15rem),
-      linear-gradient(135deg, color-mix(in srgb, var(--blog-accent) 10%, var(--global-card-bg-color)), var(--global-card-bg-color));
-  }
-
-  .blog-index__intro::after {
-    content: "";
-    position: absolute;
-    right: -2rem;
-    bottom: -3rem;
-    width: 10rem;
-    height: 10rem;
-    border: 1px solid color-mix(in srgb, var(--blog-accent) 32%, transparent);
-    border-radius: 50%;
-  }
-
-  .blog-index__eyebrow {
-    margin: 0 0 0.55rem;
-    color: var(--global-theme-color);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .blog-index__intro h2 {
-    margin: 0;
-    color: var(--global-text-color);
-    font-size: clamp(1.55rem, 4vw, 2.15rem);
-    font-weight: 780;
-    letter-spacing: -0.025em;
-  }
-
-  .blog-index__intro p:last-child {
-    max-width: 42rem;
-    margin: 0.75rem 0 0;
-    color: var(--global-text-color-light);
-    line-height: 1.72;
   }
 
   .blog-index__list {
@@ -131,12 +83,6 @@ _styles: |
 ---
 
 <div class="blog-index">
-  <section class="blog-index__intro">
-    <p class="blog-index__eyebrow">Research Notes</p>
-    <h2>科研途中，留下一些可回看的坐标。</h2>
-    <p>这里记录论文背后的过程、研究中的想法，以及偶尔值得保存的片段。</p>
-  </section>
-
   <div class="blog-index__list">
     {% for post in site.posts %}
       <a class="blog-index__card" href="{{ post.url | relative_url }}">
