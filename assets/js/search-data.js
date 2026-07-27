@@ -11,7 +11,7 @@ ninja.data = [{
     },
   },{id: "nav-blog",
           title: "Blog",
-          description: "Research notes, publication journeys, and occasional reflections.",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/blog/";
@@ -44,11 +44,11 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/links/";
           },
-        },{id: "post-两篇论文的投稿时间线-修改-转投与再次出发",
+        },{id: "post-两篇论文投稿时间线",
         
-          title: "两篇论文的投稿时间线：修改、转投与再次出发",
+          title: "两篇论文投稿时间线",
         
-        description: "记录两项工作的投稿、修改与转投历程，以及同行评审之外那些漫长但重要的等待。",
+        description: "两篇论文的投稿状态记录。",
         section: "Posts",
         handler: () => {
           
