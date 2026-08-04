@@ -47,4 +47,6 @@ giscus_comments: false
 26/07/27 Editorial review<br>
 26/07/28 Unsubmitted (Technical check)<br>
 修改要求：在参考文献前新增 “Data and Software Availability” 部分<br>
-修改要求：参考文献补充文献标题，正文引用调整为顺序数字上标
+修改要求：参考文献补充文献标题，正文引用调整为顺序数字上标<br>
+26/07/31 Associate Editor Assigned<br>
+26/08/03 In Peer Review
