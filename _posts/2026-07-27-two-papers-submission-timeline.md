@@ -26,8 +26,19 @@ giscus_comments: false
 ### Physical Review Letters
 
 26/01/23 Submission<br>
-26/02–04 In peer review<br>
-26/04/16 Editorial decision
+26/01/27 Correspondence (miscellaneous) sent to author<br>
+26/01/30 Acknowledgment sent to author<br>
+26/02/05 Correspondence (miscellaneous) sent to author<br>
+26/02/05 Review request to referee; message received (not a report)<br>
+26/02/05 Review request to referee; message received (not a report)<br>
+26/02/05–04/07 Review request to referee; editor concludes response unlikely<br>
+26/02/17 Reminder to referee [others sent at 1–2 week intervals]<br>
+26/02/18–02/19 Review request to referee; message received (not a report)<br>
+26/02/19 Review request to referee; message received (not a report)<br>
+26/02/19–02/20 Review request to referee; message received (not a report)<br>
+26/02/20–02/21 Review request to referee; message received (not a report)<br>
+26/02/26–03/09 Review request to referee; report received<br>
+26/04/16 Editorial decision and/or referee comments sent to author
 
 ### Nature Communications
 
