@@ -56,8 +56,8 @@ giscus_comments: false
 
 26/07/27 Submission<br>
 26/07/27 Editorial review<br>
-26/07/28 Unsubmitted (Technical check)<br>
-The manuscript was returned for technical revisions concerning the Data and Software Availability statement and reference formatting.<br>
+26/07/28 Unsubmitted (Technical check) & Submission
+
 26/07/31 Associate Editor Assigned<br>
 26/08/03 In Peer Review<br>
 26/08/10 Editorial Review
