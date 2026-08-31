@@ -62,4 +62,5 @@ giscus_comments: false
 26/08/03 In Peer Review<br>
 26/08/10 Editorial Review<br>
 26/08/21 In Peer Review<br>
-26/08/25 Editorial Review
+26/08/25 Editorial Review<br>
+26/08/30 Awaiting Decision
