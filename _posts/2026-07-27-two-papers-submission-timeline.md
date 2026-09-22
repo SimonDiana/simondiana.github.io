@@ -64,3 +64,7 @@ giscus_comments: false
 26/08/21 In Peer Review<br>
 26/08/25 Editorial Review<br>
 26/08/30 Awaiting Decision
+
+26/08/31 Minor revision<br>
+26/09/14 Revision submitted<br>
+26/09/21 In Peer Review
