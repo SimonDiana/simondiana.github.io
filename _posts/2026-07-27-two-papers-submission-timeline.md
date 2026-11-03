@@ -69,4 +69,6 @@ giscus_comments: false
 26/09/14 Revision submitted<br>
 26/09/21 In Peer Review<br>
 26/10/11 Awaiting Decision<br>
-26/10/19 Accepted
+26/10/19 Accepted<br>
+26/10/27 Proof received<br>
+26/11/03 Proof submitted
