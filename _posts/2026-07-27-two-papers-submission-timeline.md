@@ -71,4 +71,4 @@ giscus_comments: false
 26/10/11 Awaiting Decision<br>
 26/10/19 Accepted<br>
 26/10/27 Proof received<br>
-26/11/03 Proof submitted
+26/11/03 Proof Comments Received
